@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.get('/canuse', (req, res) => {
     Qiniu.findOne({}, (err, result) => {
-        if (err) {
+        if (err || !result) {
             return res.send(false)
         }
         if (result) {
