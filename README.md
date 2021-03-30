@@ -4,3 +4,7 @@
 	// 需安装mongodb以及node
 	npm install
 	npm run start
+# 未来
+* 用户权限管理
+* 游客输入邮箱评论功能
+* 视频博客管理功能
