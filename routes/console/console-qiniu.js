@@ -11,6 +11,27 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/canuse', (req, res) => {
+    Qiniu.findOne({}, (err, result) => {
+        if (err) {
+            return res.send(false)
+        }
+        if (result) {
+            let data = {
+                accessKey: result.accessKey,
+                secretKey: result.secretKey,
+                albumUrl: result.albumUrl,
+                blogUrl: result.blogUrl,
+            }
+            if (Object.values(data).some(v => !v)) {
+                return res.send(false)
+            }
+        }
+        return res.send(true)
+    })
+})
+
+
 router.post('/', (req, res) => {
     let qiniu = new Qiniu({
         ...req.body,

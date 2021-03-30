@@ -19,7 +19,6 @@
     "qiniu": "^7.3.1"
   },
   "devDependencies": {
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "node-dev": "^6.6.0"
   }
 }
