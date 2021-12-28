@@ -10,7 +10,7 @@ const qiniuUpload = require('../public/javascripts/qiniu');
 router.get('/', function (req, res, next) {
     const pagination = req.query;
     const tag = pagination.selectedTag ? { tag: pagination.selectedTag, publish: 1 } : { publish: 1};
-    Article.find(tag).sort('createTime -test').skip((Number(pagination.currentPage) - 1) * Number(pagination.size)).limit(Number(pagination.size)).exec(function (err, data) {
+    Article.find(tag).sort('-createTime').skip((Number(pagination.currentPage) - 1) * Number(pagination.size)).limit(Number(pagination.size)).exec(function (err, data) {
         if (err) {
             return res.send(err)
         }
