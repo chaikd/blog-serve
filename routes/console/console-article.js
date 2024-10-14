@@ -30,7 +30,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-    Article.findOne({ _id: req.params.id }, function(err, data) {
+    Article.find({ _id: req.params.id }, function(err, data) {
         if(err) {
             return res.send(err)
             return;

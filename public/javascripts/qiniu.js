@@ -7,7 +7,7 @@ module.exports = class qiniuUploadToken {
 
     getQiniuInfo() {
         return new Promise((resolve, reject) => {
-            Qiniu.findOne({}, (err, result) => {
+            Qiniu.find({}, (err, result) => {
                 if (err) {
                     reject(err);
                 }

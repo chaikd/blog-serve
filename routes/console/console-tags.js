@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 })
 router.post('/', (req, res, next) => {
     const tag = new Tag({ ...req.body });
-    Tag.findOne({ 'name': tag.name }, (err, result) => {
+    Tag.find({ 'name': tag.name }, (err, result) => {
         if (result) {
             res.status(400).send('标签已存在')
         } else {

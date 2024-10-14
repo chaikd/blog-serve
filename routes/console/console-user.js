@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/isexist',(req, res, next) => {
-  User.findOne({ 'userName': req.query.userName }, (err, result) => {
+  User.find({ 'userName': req.query.userName }, (err, result) => {
     if (result) {
       res.status(400).send('用户名已存在');
       return

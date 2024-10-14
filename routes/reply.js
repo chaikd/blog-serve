@@ -25,7 +25,7 @@ router.post('/replices/:targetId', function (req, res, next) {
                 createdTime: new Date().getTime()
             };
             if(req.body.targetReplyId) {
-                await Reply.findOne({'_id': req.body.targetReplyId}, (err, replice) => {
+                await Reply.find({'_id': req.body.targetReplyId}, (err, replice) => {
                     replyObj.repliedUser = replice.createdBy;
                 })
             }else {
