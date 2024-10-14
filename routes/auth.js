@@ -7,13 +7,8 @@ const JWT = require('../public/javascripts/jwt');
 
 router.post('/login', function (req, res, next) {
   let user = req.body;
-  console.log('user: ', user);
   User.find({userName: user.userName,password: MD5.MD5Value(user.password)}, function(err,result) {
-    console.log('{userName: user.userName,password: MD5.MD5Value(user.password)}: ', {userName: user.userName,password: MD5.MD5Value(user.password)});
-    console.log(err)
-    console.log(result)
     if (result) {
-      console.log(result, user)
       const jwt = new JWT(result._id+','+result.userName);
       const _token = jwt.generateToken();
       res.cookie('_token', _token, {maxAge: 24*60*60 * 1000, httpOnly: true})

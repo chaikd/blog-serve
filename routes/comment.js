@@ -33,7 +33,6 @@ router.get('/:id/replices', function (req, res, next) {
     Comment.find({'targetId': req.params.id, 'publish': true}, (err, result) => {
         if(err => {
             return res.send(err);
-            return;
         })
         return res.send(result)
     })

@@ -58,16 +58,14 @@ router.get('/tags', function (req, res, next) {
 })
 
 router.get('/:id', function (req, res, next) {
-    Article.find({ _id: req.params.id }, function(err, data) {
+    Article.findOne({ _id: req.params.id }, function(err, data) {
         if(err) {
             return res.send(err)
-            return;
         }
         // return res.send(data)
         Comment.countDocuments({'targetId': req.params.id, 'publish': true}, (err, count) => {
             if(err) {
                 return res.send(err)
-                return;
             }
             data.commentCount = count || 0;
             return res.send(data)

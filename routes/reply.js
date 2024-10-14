@@ -13,7 +13,6 @@ router.post('/replices/:targetId', function (req, res, next) {
         Comment.findOneAndUpdate({'_id': req.params.targetId},{$inc:{replicesCount:1}},{new: true}, async (err, comment)=> {
             if(err) {
                 return res.send(err);
-                return;
             }
             let replyObj = {
                 ...req.body,
@@ -46,7 +45,6 @@ router.get('/replices/:id', function (req, res, next) {
     Reply.find({'commentId': req.params.id, publish: true}, (err, result) => {
         if(err => {
             return res.send(err);
-            return;
         })
         return res.send(result)
     })

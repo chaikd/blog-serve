@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    Qiniu.find({}, (err, result) => {
+    Qiniu.findOne({}, (err, result) => {
         if(err) {
             return res.send(err)
         }
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/canuse', (req, res) => {
-    Qiniu.find({}, (err, result) => {
+    Qiniu.findOne({}, (err, result) => {
         if (err || !result) {
             return res.send(false)
         }

@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
   User.find(tag).skip((Number(pagination.currentPage)-1) * Number(pagination.size)).limit(Number(pagination.size)).exec(function (err, data) {
     if (err) {
         return res.send(err)
-        return;
     }
     User.countDocuments(tag, function (err, result) {
         data = data.map(v => {
@@ -27,7 +26,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/isexist',(req, res, next) => {
-  User.find({ 'userName': req.query.userName }, (err, result) => {
+  User.findOne({ 'userName': req.query.userName }, (err, result) => {
     if (result) {
       res.status(400).send('用户名已存在');
       return
@@ -45,7 +44,6 @@ router.post('/', function (req, res, next) {
   user.save((err) => {
     if (err) {
         return res.send(err)
-        return;
     }
     return res.send({success: 1})
   })
