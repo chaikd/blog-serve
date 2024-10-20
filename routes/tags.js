@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
         if (err) {
             return res.send(err);
         }
-        return res.send(data)
+        return res.send(data || [])
     })
 })
 module.exports = router; 

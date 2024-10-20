@@ -76,7 +76,7 @@ router.put('/', function (req, res, next) {
             res.status(500).send(err);
             return;
         }
-        Article.update({ _id: fileds._id[0] }, { $set: { 
+        Article.updateOne({ _id: fileds._id[0] }, { $set: { 
             tag: fileds.tag[0], 
             codeHtml: fileds.codeHtml[0], 
             title: fileds.title[0], 
@@ -84,6 +84,7 @@ router.put('/', function (req, res, next) {
             updateTime: new Date().getTime(), 
             publish: fileds.publish[0], 
             canReply: fileds.canReply[0],
+            description: fileds.description[0],
             cover: fileds.cover[0]
         }}, function (err, result) {
             if (err) {
