@@ -6,6 +6,7 @@ var logger = require('morgan');
 const JWT = require('./public/javascripts/jwt');
 
 var indexRouter = require('./routes/index');
+var homeRouter = require('./routes/home');
 var articleRouter = require('./routes/article');
 var tagsRouter = require('./routes/tags');
 var authRouter = require('./routes/auth');
@@ -48,6 +49,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/api', indexRouter);
+app.use('/api/home', homeRouter);
 app.use('/api/article', articleRouter);
 app.use('/api/tag', tagsRouter);
 app.use('/api/auth', authRouter);
